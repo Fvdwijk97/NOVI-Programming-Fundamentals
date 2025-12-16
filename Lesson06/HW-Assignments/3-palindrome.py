@@ -54,12 +54,9 @@ def is_palindrome(zin):
 zin1_geplakt = zin1.replace(" ","")
 zin2_geplakt = zin2.replace(" ","")
 
-palindrome1 = is_palindrome(zin1_geplakt)
-palindrome2 = is_palindrome(zin2_geplakt)
-
-if palindrome1:
+if is_palindrome(zin1_geplakt):
     print(f"'{zin1}' is een palindrome")
-if palindrome2:
+if is_palindrome(zin2_geplakt):
     print(f"'{zin2}' is een palindrome")
 
 
