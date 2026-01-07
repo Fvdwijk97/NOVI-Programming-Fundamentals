@@ -1,0 +1,2 @@
+user = {"Naam": "", "Voorkeur": "", "Geschiedenis": []}
+
