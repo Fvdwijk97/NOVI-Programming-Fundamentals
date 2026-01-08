@@ -10,11 +10,11 @@ print("Welkom bij de Uber App!\n")
 user["Naam"] = input("Voer uw naam in: ").capitalize()
 u.scheiding()
 
-# Keuzemenu ubers en bijbehorende prijzen, en gebruikerskeuze opslaan in 'chosen_uber'
+# Keuzemenu ubers/bijbehorende prijzen, en gebruikerskeuze opslaan in 'chosen_uber'
 u.uber_menu(uber_options)
 chosen_uber = u.uber_kiezen(uber_options)
 
-# Gebruiker kan gekozen uber opslaan als 'default' met input validatie
+# Gebruiker kan kiezen of ze gekozen uber willen opslaan als 'default'. Met input validatie
 u.voorkeur_opslaan(chosen_uber)
 
 # Gebruiker voert aantal km's in en totale prijs wordt berekend obv gekozen uber en afstand
