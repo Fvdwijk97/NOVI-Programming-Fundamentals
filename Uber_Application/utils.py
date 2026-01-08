@@ -1,10 +1,10 @@
 from user_data import user
 
-def scheiding():
+def separator():
     """Zorgt voor goede opmaak en scheiding functionaliteiten tijdens gebruik app"""
     print("\n", 20 * "-", end="\n\n")
 
-def uber_menu(lijst):
+def generate_uber_menu(lijst):
     """Genereert het keuzemenu voor type ubers met bijbehorende prijzen
     :param: lijst van tuples. Eerste waarde is nummering, tweede waarde is dict {Uber : prijs}.
     """
@@ -14,7 +14,7 @@ def uber_menu(lijst):
             print(f"{num}. {uber} - {price:.2f} euro per km")
     print()
 
-def uber_kiezen(lijst):
+def parse_uber_choice(lijst):
     """Vraagt gebruiker een uber te kiezen obv keuzemenu. Haalt obv ingevoerd nummer het bijbehorende
     type uber op en slaat deze op in 'chosen_uber'. Incl input validatie.
     :param: lijst van tuples. Eerste waarde is nummering, tweede waarde is dict {Uber : prijs}."""
@@ -22,7 +22,7 @@ def uber_kiezen(lijst):
         get_user_choice = input("Voer het nummer van uw keuze in: ")
         if get_user_choice != "1" and get_user_choice != "2" and get_user_choice != "3":
             print("U heeft geen geldige keuze gemaakt. Probeer het nog eens.")
-            scheiding()
+            separator()
         else:
             break
     for num, option in lijst:
@@ -31,17 +31,17 @@ def uber_kiezen(lijst):
                 chosen_uber = uber
     return chosen_uber
 
-def voorkeur_opslaan(chosen_uber):
+def safe_preference(chosen_uber):
     """Geeft gebruiker mogelijkheid gekozen uber op te slaan als voorkeur, of dit over te slaan.
     Incl input validatie.
     :param: str met gebruikers keuze voor uber."""
     while True:
-        voorkeur_opslaan = input("Wilt u de gekozen uber opslaan als voorkeur voor volgende ritten? ja/nee: ")
+        user_preference = input("Wilt u de gekozen uber opslaan als voorkeur voor volgende ritten? ja/nee: ")
         print()
-        if voorkeur_opslaan.lower() == "ja":
+        if user_preference.lower() == "ja":
             user["Voorkeur"] = chosen_uber
             break
-        elif voorkeur_opslaan.lower() == "nee":
+        elif user_preference.lower() == "nee":
             break
         else:
             print("U heeft geen geldige keuze gemaakt. Voer in 'ja' of 'nee'.")
@@ -60,7 +60,7 @@ def calc_total_cost(price_list, users_choice, distance_km):
     total_cost = distance_km * price_per_km
     return total_cost
 
-def rit_bevestiging(chosen_uber, distance, total_cost):
+def confirm_ride(chosen_uber, distance, total_cost):
     """Opmaak voor output gekozen rit incl gekozen uber, aantal km's en totale prijs.
     :chosen_uber: str met gebruikers keuze voor uber
     :distance: int met afstand in km, ingevoerd door gebruiker
